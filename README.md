@@ -1,4 +1,4 @@
-## TTN JSON Datasource - a generic backend datasource
+## TTN JSON Datasource - a backend datasource for The Things Industries based in Simple JSON Datasource
 
 More documentation about datasource plugins can be found in the [Docs](https://github.com/grafana/grafana/blob/master/docs/sources/plugins/developing/datasources.md).
 
@@ -20,10 +20,10 @@ Those two urls are optional:
 
 To install this plugin using the `grafana-cli` tool:
 ```
-sudo grafana-cli plugins install grafana-simple-json-datasource
+sudo grafana-cli plugins install grafana-ttn-json-datasource
 sudo service grafana-server restart
 ```
-See [here](https://grafana.com/plugins/grafana-simple-json-datasource/installation) for more
+See [here](https://grafana.com/plugins/grafana-ttn-json-datasource/installation) for more
 information.
 
 ### Example backend implementations
@@ -107,7 +107,7 @@ If the metric selected is `"type": "table"`, an example `table` response:
 
 ### Annotation API
 
-The annotation request from the Simple JSON Datasource is a POST request to
+The annotation request from the TTN JSON Datasource is a POST request to
 the `/annotations` endpoint in your datasource. The JSON request body looks like this:
 ``` javascript
 {
@@ -121,7 +121,7 @@ the `/annotations` endpoint in your datasource. The JSON request body looks like
   },
   "annotation": {
     "name": "deploy",
-    "datasource": "Simple JSON Datasource",
+    "datasource": "TTN JSON Datasource",
     "iconColor": "rgba(255, 96, 96, 1)",
     "enable": true,
     "query": "#deploy"
@@ -216,35 +216,7 @@ npm run build
 
 ### Changelog
 
-1.4.0
-
-- Support for adhoc filters:
-  - added tag-keys + tag-values api
-  - added adHocFilters parameter to query body
-
-1.3.5
-- Fix for dropdowns in query editor to allow writing template variables (broke due to change in Grafana).
-
-1.3.4
-- Adds support for With Credentials (sends grafana cookies with request) when using Direct mode
-- Fix for the typeahead component for metrics dropdown (`/search` endpoint).
-
-1.3.3
- - Adds support for basic authentication
-
-1.2.4
- - Add support returning sets in the search endpoint
-
-1.2.3
- - Allow nested templates in find metric query. #23
-
-1.2.2
- - Dont execute hidden queries
- - Template support for metrics queries
- - Template support for annotation queries
-
-### If using Grafana 2.6
-NOTE!
-for grafana 2.6 please use [this version](https://github.com/grafana/simple-json-datasource/commit/b78720f6e00c115203d8f4c0e81ccd3c16001f94)
+1.0.0
+Initial release
 
 Copy the data source you want to `/public/app/plugins/datasource/`. Then restart grafana-server. The new data source should now be available in the data source type dropdown in the Add Data Source View.
